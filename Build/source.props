@@ -1,0 +1,11 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Documents:https://docs.microsoft.com/zh-tw/visualstudio/msbuild/
+    Reference:https://docs.microsoft.com/zh-tw/visualstudio/msbuild/msbuild-reference
+    Startup:https://docs.microsoft.com/zh-tw/visualstudio/msbuild/walkthrough-creating-an-msbuild-project-file-from-scratch
+    -->
+  <ItemGroup>
+    <Compile Include="$(SharedRoot)**/*.cs" />
+    <None Include="$(SharedRoot)**/*.props" />
+  </ItemGroup>
+</Project>

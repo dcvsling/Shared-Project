@@ -4,11 +4,22 @@
     Reference:https://docs.microsoft.com/zh-tw/visualstudio/msbuild/msbuild-reference
     Startup:https://docs.microsoft.com/zh-tw/visualstudio/msbuild/walkthrough-creating-an-msbuild-project-file-from-scratch
     -->
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)*.cs" />
-    <None Include="$(MSBuildThisFileDirectory)*.props" />
-  </ItemGroup>
-  <ItemGroup Label="Shared">
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-  </ItemGroup>
+  <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.props" Condition="Exists('..\Directory.Build.props')" Label="Shared"/>
+  <PropertyGroup Label="Shared">
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AspNetCorePackageVersion>2.1.0-preview*</AspNetCorePackageVersion>
+    <SharedRoot>$(MSBuildThisFileDirectory)</SharedRoot>
+    <TypeScriptEnable>true</TypeScriptEnable>
+    <DockerEnable>false</DockerEnable>
+    <RazorEnable>false</RazorEnable>
+    <WebMode>false</WebMode>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildThisFileDirectory)Build\capabilities.props"/>
+  <Import Project="$(MSBuildThisFileDirectory)Build\source.props" Label="Shared"/>
+  <Import Project="$(MSBuildThisFileDirectory)Build\package.props" Label="Shared"/>
+  <Import Project="$(MSBuildThisFileDirectory)Build\typescript.props" Condition="$(TypeScriptEnable) == 'true'" Label="Shared"/>
+  <Import Project="$(MSBuildThisFileDirectory)Build\docker.props" Condition="$(DockerEnable) == 'true'" Label="Globals"/>
+  <Import Project="$(MSBuildThisFileDirectory)Build\razor.props" Condition="$(RazorEnable) == 'true'" Label="Shared"/>
 </Project>

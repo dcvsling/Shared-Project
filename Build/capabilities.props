@@ -1,0 +1,20 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Documents:https://docs.microsoft.com/zh-tw/visualstudio/msbuild/
+    Reference:https://docs.microsoft.com/zh-tw/visualstudio/msbuild/msbuild-reference
+    Startup:https://docs.microsoft.com/zh-tw/visualstudio/msbuild/walkthrough-creating-an-msbuild-project-file-from-scratch
+    ProjectCapability:https://github.com/Microsoft/VSProjectSystem/blob/master/doc/overview/project_capabilities.md
+    -->
+  <ItemGroup>
+    <ProjectCapability Include="HandlesOwnReload" />
+    <ProjectCapability Include="OpenProjectFile" />
+  </ItemGroup>
+  <ItemGroup  Label="Shared">
+    <ProjectCapability Include="DotNetCoreWeb" Condition="$(WebMode) == 'true'" />
+    <ProjectCapability Include="SupportHierarchyContextSvc"/>
+    <ProjectCapability Include="DynamicDependentFile" />
+    <ProjectCapability Include="DynamicFileNesting" />
+    <ProjectCapability Include="LocalUserSecrets" Condition=" '$(GenerateUserSecretsAttribute)' == 'true' " />
+  </ItemGroup>
+
+</Project>

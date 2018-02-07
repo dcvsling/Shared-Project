@@ -8,6 +8,16 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Core.Lib.Shared</Import_RootNamespace>
   </PropertyGroup>
-
+  <ItemGroup>
+    <ProjectCapability Include="ProjectConfigurationsInferredFromUsage" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Build\capabilities.props" />
+    <None Include="$(MSBuildThisFileDirectory)Build\docker.props" />
+    <None Include="$(MSBuildThisFileDirectory)Build\razor.props" />
+    <None Include="$(MSBuildThisFileDirectory)Build\package.props" />
+    <None Include="$(MSBuildThisFileDirectory)Build\source.props" />
+    <None Include="$(MSBuildThisFileDirectory)Build\typescript.props" />
+  </ItemGroup>
   <Import Project="shared.props" />
 </Project>
